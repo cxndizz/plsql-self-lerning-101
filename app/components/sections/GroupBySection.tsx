@@ -27,18 +27,19 @@ GROUP BY dept_id;`,
               },
               {
                 name: "Group by หลายคอลัมน์",
-                thai: "ทุก combination ของคอลัมน์เป็น 1 กลุ่ม",
+                thai: "ทุก combination ของคอลัมน์เป็น 1 กลุ่ม — Oracle ใช้ EXTRACT(YEAR FROM ...)",
                 example: `SELECT dept_id, EXTRACT(YEAR FROM hire_date) AS yr, COUNT(*)
 FROM employees
 GROUP BY dept_id, EXTRACT(YEAR FROM hire_date);`,
-                runnable: true,
+                runnable: false,
+                note: "alasql ในเบราว์เซอร์ไม่รองรับ EXTRACT — รันใน Oracle DB ได้",
               },
               {
                 name: "Aggregate หลายตัว",
                 thai: "ดู count + sum + avg ในผลเดียวกัน",
                 example: `SELECT dept_id,
   COUNT(*) AS n,
-  SUM(salary) AS total,
+  SUM(salary) AS sum_sal,
   ROUND(AVG(salary),0) AS avg_sal,
   MIN(salary) AS min_sal,
   MAX(salary) AS max_sal

@@ -8,7 +8,7 @@ export function AggregateSection() {
         what="Aggregate functions = ฟังก์ชันสรุปข้อมูล — บีบหลายแถวเป็นค่าเดียว"
         why="รายงานต้องการ 'จำนวนพนักงาน', 'เงินเดือนรวม', 'เฉลี่ย' — ทุกแบบใช้ aggregate"
         how="ใส่ใน SELECT — ถ้าไม่ใช้ GROUP BY จะรวมทุกแถวเป็น 1 แถวผลลัพธ์"
-        example={`SELECT COUNT(*) AS total, AVG(salary) AS avg_sal\nFROM employees;`}
+        example={`SELECT COUNT(*) AS num_emp, AVG(salary) AS avg_sal\nFROM employees;`}
       />
       <RefList
         groups={[
@@ -17,7 +17,7 @@ export function AggregateSection() {
             emoji: "📊",
             color: "emerald",
             items: [
-              { name: "COUNT(*)", syntax: "COUNT(*)", thai: "นับจำนวนแถวทั้งหมด — รวม NULL ด้วย", example: "SELECT COUNT(*) AS total FROM employees;", runnable: true },
+              { name: "COUNT(*)", syntax: "COUNT(*)", thai: "นับจำนวนแถวทั้งหมด — รวม NULL ด้วย", example: "SELECT COUNT(*) AS num_emp FROM employees;", runnable: true },
               { name: "COUNT(col)", syntax: "COUNT(col)", thai: "นับเฉพาะแถวที่ col ไม่เป็น NULL", example: "SELECT COUNT(dept_id) AS with_dept FROM employees;", runnable: true },
               { name: "COUNT(DISTINCT col)", syntax: "COUNT(DISTINCT col)", thai: "นับค่าที่ไม่ซ้ำ", example: "SELECT COUNT(DISTINCT dept_id) AS num_depts FROM employees;", runnable: true },
               { name: "SUM", syntax: "SUM(col)", thai: "ผลรวม (ข้าม NULL)", example: "SELECT SUM(salary) AS total_payroll FROM employees;", runnable: true },
@@ -31,7 +31,7 @@ export function AggregateSection() {
             color: "sky",
             items: [
               { name: "SUM(DISTINCT)", thai: "ผลรวมของค่าที่ไม่ซ้ำเท่านั้น", example: "SELECT SUM(DISTINCT salary) FROM employees;", runnable: true },
-              { name: "หลายอันใน SELECT", thai: "ใส่หลาย aggregate ในแถวเดียวได้", example: "SELECT\n  COUNT(*) AS n,\n  MIN(salary) AS lo,\n  MAX(salary) AS hi,\n  ROUND(AVG(salary),0) AS avg\nFROM employees;", runnable: true },
+              { name: "หลายอันใน SELECT", thai: "ใส่หลาย aggregate ในแถวเดียวได้", example: "SELECT\n  COUNT(*) AS n,\n  MIN(salary) AS lo,\n  MAX(salary) AS hi,\n  ROUND(AVG(salary),0) AS avg_sal\nFROM employees;", runnable: true },
             ],
           },
           {
